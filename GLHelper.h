@@ -24,6 +24,8 @@
 #define USING_NS_CIRCLE USING_NS_SHAPES using namespace Circle;
 // shortcut for using namespace Triangle;
 #define USING_NS_TRIANGLE USING_NS_SHAPES using namespace Triangle;
+// shortcut for using namespace Quad;
+#define USING_NS_QUAD USING_NS_SHAPES using namespace Quad;
 
 namespace GLHelper
 {
@@ -90,6 +92,37 @@ namespace GLHelper
              * @param vertices all 3 vertices (x1, y1, z1, x2, y2, z2, x3, y3, z3)
              */
             void DrawTriangle( GLfloat vertices[9] );
+        }
+        
+        namespace Quad
+        {
+            /**
+             * Draw a square
+             * @param xCenterPos x-axis coordinate for the center of the square
+             * @param yCenterPos y-axis coordinate for the center of the square
+             * @param zCenterPos z-axis coordinate for the center of the square
+             * @param sideLength length of the square's sides
+             */
+            void DrawSquare( GLfloat xCenterPos, GLfloat yCenterPos, GLfloat zCenterPos, GLfloat sideLength );
+            
+            /**
+             * Draw a quad
+             * @param topLeftVertex top left vertex array
+             * @param topRightVertex top right vertex array
+             * @param bottomRightVertex bottom right vertex array
+             * @param bottomLeftVertex bottom left vertex array
+             */
+            void DrawQuad( GLfloat topLeftVertex[3], GLfloat topRightVertex[3], GLfloat bottomRightVertex[3], GLfloat bottomLeftVertex[3] );
+            
+            /**
+             * Draw a rectangle
+             * @param xCenterPos x-axis coordinate for the center of the rectangle
+             * @param yCenterPos y-axis coordinate for the center of the rectangle
+             * @param zCenterPos z-axis coordinate for the center of the rectangle
+             * @param width width (length along the x-axis) of the rectangle
+             * @param height height (length along the y-axis) of the rectangle
+             */
+            void DrawRectangle( GLfloat xCenterPos, GLfloat yCenterPos, GLfloat zCenterPos, GLfloat width, GLfloat height );
         }
     }
 }
