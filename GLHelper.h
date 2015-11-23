@@ -18,40 +18,35 @@
 #define GLH GLHelper
 // shortcut for using namespace GLHelper;
 #define USING_NS_GLH using namespace GLHelper;
-// shortcut for using namespace Shapes;
-#define USING_NS_SHAPES USING_NS_GLH using namespace Shapes;
+// shortcut for using namespace Shapes2D;
+#define USING_NS_SHAPES_2D USING_NS_GLH using namespace Shapes2D;
 // shortcut for using namespace Circle;
-#define USING_NS_CIRCLE USING_NS_SHAPES using namespace Circle;
+#define USING_NS_CIRCLE USING_NS_SHAPES_2D using namespace Circle;
 // shortcut for using namespace Triangle;
-#define USING_NS_TRIANGLE USING_NS_SHAPES using namespace Triangle;
+#define USING_NS_TRIANGLE USING_NS_SHAPES_2D using namespace Triangle;
 // shortcut for using namespace Quad;
-#define USING_NS_QUAD USING_NS_SHAPES using namespace Quad;
+#define USING_NS_QUAD USING_NS_SHAPES_2D using namespace Quad;
+// shortcut for using namespace Pentagon;
+#define USING_NS_PENTAGON USING_NS_SHAPES_2D using namespace Pentagon;
+// shortcut for using namespace Hexagon;
+#define USING_NS_HEXAGON USING_NS_SHAPES_2D using namespace Hexagon;
 
 namespace GLHelper
 {
-    namespace Shapes
+    namespace Shapes2D
     {
         namespace Circle
         {
             /**
              * Draw a circle
-             * @param xPos x-axis coordinate for the center of the circle
-             * @param yPos y-axis coordinate for the center of the circle
-             * @param zPos z-axis coordinate for the center of the circle
+             * @param xCenterPos x-axis coordinate for the center of the circle
+             * @param yCenterPos y-axis coordinate for the center of the circle
+             * @param zCenterPos z-axis coordinate for the center of the circle
              * @param radius circle radius
              * @param numberOfSides how many sides does the circle have
+             * @param isHollow is the circle hollow or filled in
              */
-            void DrawCircle( GLfloat xPos, GLfloat yPos, GLfloat zPos, GLfloat radius, GLint numberOfSides );
-            
-            /**
-             * Draw a hollow circle
-             * @param xPos x-axis coordinate for the center of the circle
-             * @param yPos y-axis coordinate for the center of the circle
-             * @param zPos z-axis coordinate for the center of the circle
-             * @param radius circle radius
-             * @param numberOfSides how many sides does the circle have
-             */
-            void DrawHollowCircle( GLfloat xPos, GLfloat yPos, GLfloat zPos, GLfloat radius, GLint numberOfSides );
+            void DrawCircle( const GLfloat xCenterPos, const GLfloat yCenterPos, const GLfloat zCenterPos, const GLfloat radius, const GLint numberOfSides, const GLboolean isHollow );
         }
         
         namespace Triangle
@@ -62,8 +57,9 @@ namespace GLHelper
              * @param yCenterPos y-axis coordinate for the center of the triangle
              * @param zCenterPos z-axis coordinate for the center of the triangle
              * @param sideLength each of the triangles sides length
+             * @param isHollow is the triangle hollow or filled in
              */
-            void DrawTriangle( GLfloat xCenterPos, GLfloat yCenterPos, GLfloat zCenterPos, GLfloat sideLength );
+            void DrawTriangle( const GLfloat xCenterPos, const GLfloat yCenterPos, const GLfloat zCenterPos, const GLfloat sideLength, const GLboolean isHollow );
             
             /**
              * Draw a triangle by specifying the xyz coordinates for each vertex
@@ -76,22 +72,25 @@ namespace GLHelper
              * @param vertex3X x coordinate for the third vertex
              * @param vertex3Y y coordinate for the third vertex
              * @param vertex3Z z coordinate for the third vertex
+             * @param isHollow is the triangle hollow or filled in
              */
-            void DrawTriangle( GLfloat vertex1X, GLfloat vertex1Y, GLfloat vertex1Z, GLfloat vertex2X, GLfloat vertex2Y, GLfloat vertex2Z, GLfloat vertex3X, GLfloat vertex3Y, GLfloat vertex3Z );
+            void DrawTriangle( const GLfloat vertex1X, const GLfloat vertex1Y, const GLfloat vertex1Z, const GLfloat vertex2X, const GLfloat vertex2Y, const GLfloat vertex2Z, const GLfloat vertex3X, const GLfloat vertex3Y, const GLfloat vertex3Z, const GLboolean isHollow );
             
             /**
              * Draw a triangle by specifying an array (x, y, z) for each vertex
              * @param vertex1 first vertex
              * @param vertex2 second vertex
              * @param vertex3 third vertex
+             * @param isHollow is the triangle hollow or filled in
              */
-            void DrawTriangle( GLfloat vertex1[3], GLfloat vertex2[3], GLfloat vertex3[3] );
+            void DrawTriangle( const GLfloat vertex1[3], const GLfloat vertex2[3], const GLfloat vertex3[3], const GLboolean isHollow );
             
             /**
              * Draw a triangle by specifying an array with all 3 vertices
              * @param vertices all 3 vertices (x1, y1, z1, x2, y2, z2, x3, y3, z3)
+             * @param isHollow is the triangle hollow or filled in
              */
-            void DrawTriangle( GLfloat vertices[9] );
+            void DrawTriangle( const GLfloat vertices[9], const GLboolean isHollow );
         }
         
         namespace Quad
@@ -102,8 +101,9 @@ namespace GLHelper
              * @param yCenterPos y-axis coordinate for the center of the square
              * @param zCenterPos z-axis coordinate for the center of the square
              * @param sideLength length of the square's sides
+             * @param isHollow is the square hollow or filled in
              */
-            void DrawSquare( GLfloat xCenterPos, GLfloat yCenterPos, GLfloat zCenterPos, GLfloat sideLength );
+            void DrawSquare( const GLfloat xCenterPos, const GLfloat yCenterPos, const GLfloat zCenterPos, const GLfloat sideLength, const GLfloat isHollow );
             
             /**
              * Draw a quad
@@ -111,8 +111,9 @@ namespace GLHelper
              * @param topRightVertex top right vertex array
              * @param bottomRightVertex bottom right vertex array
              * @param bottomLeftVertex bottom left vertex array
+             * @param isHollow is the quad hollow or filled in
              */
-            void DrawQuad( GLfloat topLeftVertex[3], GLfloat topRightVertex[3], GLfloat bottomRightVertex[3], GLfloat bottomLeftVertex[3] );
+            void DrawQuad( const GLfloat topLeftVertex[3], const GLfloat topRightVertex[3], const GLfloat bottomRightVertex[3], const GLfloat bottomLeftVertex[3], const GLboolean isHollow );
             
             /**
              * Draw a rectangle
@@ -121,8 +122,43 @@ namespace GLHelper
              * @param zCenterPos z-axis coordinate for the center of the rectangle
              * @param width width (length along the x-axis) of the rectangle
              * @param height height (length along the y-axis) of the rectangle
+             * @param isHollow is the rectangle hollow or filled in
              */
-            void DrawRectangle( GLfloat xCenterPos, GLfloat yCenterPos, GLfloat zCenterPos, GLfloat width, GLfloat height );
+            void DrawRectangle( const GLfloat xCenterPos, const GLfloat yCenterPos, const GLfloat zCenterPos, const GLfloat width, const GLfloat height, const GLboolean isHollow );
+        }
+        
+        namespace Pentagon
+        {
+            /**
+             * Draw an equilateral pentagon
+             * @param xCenterPos x-axis coordinate for the center of the pentagon
+             * @param yCenterPos y-axis coordinate for the center of the pentagon
+             * @param zCenterPos z-axis coordinate for the center of the pentagon
+             * @param radius pentagon radius
+             * @param isHollow is the pentagon hollow or filled in
+             */
+            void DrawPentagon( const GLfloat xCenterPos, const GLfloat yCenterPos, const GLfloat zCenterPos, const GLfloat radius, const GLboolean isHollow );
+        }
+        
+        namespace Hexagon
+        {
+            /**
+             * Draw an equilateral hexagon
+             * @param xCenterPos x-axis coordinate for the center of the hexagon
+             * @param yCenterPos y-axis coordinate for the center of the hexagon
+             * @param zCenterPos z-axis coordinate for the center of the hexagon
+             * @param radius hexagon radius
+             * @param isHollow is the hexagon hollow or filled in
+             */
+            void DrawHexagon( const GLfloat xCenterPos, const GLfloat yCenterPos, const GLfloat zCenterPos, const GLfloat radius, const GLboolean isHollow );
+        }
+    }
+    
+    namespace Shapes3D
+    {
+        namespace Cube
+        {
+            void DrawCube( const GLfloat xCenterPos, const GLfloat yCenterPos, const GLfloat zCenterPos, const GLfloat edgeLength, const GLfloat isWireframe );
         }
     }
 }
