@@ -13,9 +13,11 @@
 
 #include <GL/glew.h>
 #include <math.h>
+#include <vector>
 
-// shortcut for using GLHelper
+// shortcuts for using GLHelper
 #define GLH GLHelper
+#define GLCore GLHelper
 // shortcut for using namespace GLHelper;
 #define USING_NS_GLH using namespace GLHelper;
 // shortcut for using namespace Shapes2D;
@@ -31,6 +33,24 @@
 // shortcut for using namespace Hexagon;
 #define USING_NS_HEXAGON USING_NS_SHAPES_2D using namespace Hexagon;
 
+#define COLOUR_RED new GLfloat[3]{255, 0, 0}
+#define COLOR_RED COLOUR_RED // for Americans
+#define COLOUR_GREEN new GLfloat[3]{0, 255, 0}
+#define COLOR_GREEN COLOUR_GREEN // for Americans
+#define COLOUR_BLUE new GLfloat[3]{0, 0, 255}
+#define COLOR_BLUE COLOUR_BLUE // for Americans
+#define COLOUR_YELLOW new GLfloat[3]{255, 255, 0}
+#define COLOR_YELLOW COLOUR_YELLOW // for Americans
+#define COLOUR_CYAN new GLfloat[3]{0, 255, 255}
+#define COLOR_CYAN COLOUR_CYAN // for Americans
+#define COLOUR_MAGENTA new GLfloat[3]{255, 0, 255}
+#define COLOR_MAGENTA COLOUR_MAGENTA // for Americans
+#define COLOUR_WHITE new GLfloat[3]{255, 255, 255}
+#define COLOR_WHITE COLOUR_WHITE // for Americans
+#define COLOUR_BLACK new GLfloat[3]{0, 0, 0}
+#define COLOR_BLACK COLOUR_BLACK // for Americans
+
+
 namespace GLHelper
 {
     namespace Shapes2D
@@ -45,8 +65,21 @@ namespace GLHelper
              * @param radius circle radius
              * @param numberOfSides how many sides does the circle have
              * @param isHollow is the circle hollow or filled in
+             * @param colour is the fill/edge colour
              */
-            void DrawCircle( const GLfloat xCenterPos, const GLfloat yCenterPos, const GLfloat zCenterPos, const GLfloat radius, const GLint numberOfSides, const GLboolean isHollow );
+            void DrawCircle( const GLfloat xCenterPos, const GLfloat yCenterPos, const GLfloat zCenterPos, const GLfloat radius, const GLint numberOfSides, const GLboolean isHollow, const GLfloat colour[3] );
+            
+            /**
+             * Draw a circle
+             * @param xCenterPos x-axis coordinate for the center of the circle
+             * @param yCenterPos y-axis coordinate for the center of the circle
+             * @param zCenterPos z-axis coordinate for the center of the circle
+             * @param radius circle radius
+             * @param numberOfSides how many sides does the circle have
+             * @param isHollow is the circle hollow or filled in
+             */
+            inline void DrawCircle( const GLfloat xCenterPos, const GLfloat yCenterPos, const GLfloat zCenterPos, const GLfloat radius, const GLint numberOfSides, const GLboolean isHollow )
+            { GLHelper::Shapes2D::Circle::DrawCircle( xCenterPos, yCenterPos, zCenterPos, radius, numberOfSides, isHollow, COLOR_WHITE ); }
         }
         
         namespace Triangle
@@ -62,6 +95,13 @@ namespace GLHelper
             void DrawTriangle( const GLfloat xCenterPos, const GLfloat yCenterPos, const GLfloat zCenterPos, const GLfloat sideLength, const GLboolean isHollow );
             
             /**
+             * Draw a triangle by specifying an array with all 3 vertices
+             * @param vertices all 3 vertices (x1, y1, z1, x2, y2, z2, x3, y3, z3)
+             * @param isHollow is the triangle hollow or filled in
+             */
+            void DrawTriangle( const GLfloat vertices[9], const GLboolean isHollow );
+            
+            /**
              * Draw a triangle by specifying the xyz coordinates for each vertex
              * @param vertex1X x coordinate for the first vertex
              * @param vertex1Y y coordinate for the first vertex
@@ -74,7 +114,8 @@ namespace GLHelper
              * @param vertex3Z z coordinate for the third vertex
              * @param isHollow is the triangle hollow or filled in
              */
-            void DrawTriangle( const GLfloat vertex1X, const GLfloat vertex1Y, const GLfloat vertex1Z, const GLfloat vertex2X, const GLfloat vertex2Y, const GLfloat vertex2Z, const GLfloat vertex3X, const GLfloat vertex3Y, const GLfloat vertex3Z, const GLboolean isHollow );
+            inline void DrawTriangle( const GLfloat vertex1X, const GLfloat vertex1Y, const GLfloat vertex1Z, const GLfloat vertex2X, const GLfloat vertex2Y, const GLfloat vertex2Z, const GLfloat vertex3X, const GLfloat vertex3Y, const GLfloat vertex3Z, const GLboolean isHollow )
+            { DrawTriangle( new GLfloat[9]{vertex1X, vertex1Y, vertex1Z, vertex2X, vertex2Y, vertex2Z, vertex3X, vertex3Y, vertex3Z}, isHollow ); }
             
             /**
              * Draw a triangle by specifying an array (x, y, z) for each vertex
@@ -83,14 +124,8 @@ namespace GLHelper
              * @param vertex3 third vertex
              * @param isHollow is the triangle hollow or filled in
              */
-            void DrawTriangle( const GLfloat vertex1[3], const GLfloat vertex2[3], const GLfloat vertex3[3], const GLboolean isHollow );
-            
-            /**
-             * Draw a triangle by specifying an array with all 3 vertices
-             * @param vertices all 3 vertices (x1, y1, z1, x2, y2, z2, x3, y3, z3)
-             * @param isHollow is the triangle hollow or filled in
-             */
-            void DrawTriangle( const GLfloat vertices[9], const GLboolean isHollow );
+            inline void DrawTriangle( const GLfloat vertex1[3], const GLfloat vertex2[3], const GLfloat vertex3[3], const GLboolean isHollow )
+            { DrawTriangle( new GLfloat[9]{vertex1[0], vertex1[1], vertex1[2], vertex2[0], vertex2[1], vertex2[2], vertex3[0], vertex3[1], vertex3[2]}, isHollow ); }
         }
         
         namespace Quad
