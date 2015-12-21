@@ -7,8 +7,9 @@
 //
 
 #include "Pentagon.h"
+#include "Circle.h"
 
-void GLHelper::Shapes2D::Pentagon::DrawPentagon( const GLfloat xCenterPos, const GLfloat yCenterPos, const GLfloat zCenterPos, const GLfloat radius, const GLboolean isHollow, const GLfloat colour[3] )
+void GLHelper::Shapes2D::Pentagon::DrawPentagon( const GLfloat xCenterPos, const GLfloat yCenterPos, const GLfloat zCenterPos, const GLfloat radius, const GLboolean isHollow, const GLfloat ( &colour )[3] )
 {
     GLHelper::Shapes2D::Circle::DrawCircle( xCenterPos, yCenterPos, zCenterPos, radius, 5, isHollow, colour );
 }

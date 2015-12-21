@@ -9,7 +9,7 @@
 #ifndef QUAD_H
 #define QUAD_H
 
-#include "../../GenericIncludes.h"
+#include <GL/glew.h>
 
 namespace GLHelper
 {
@@ -26,7 +26,7 @@ namespace GLHelper
              * @param isHollow is the square hollow or filled in
              * @param colour is the fill/edge colour (RED [0-255], GREEN [0-255], BLUE [0-255])
              */
-            void DrawSquare( const GLfloat xCenterPos, const GLfloat yCenterPos, const GLfloat zCenterPos, const GLfloat sideLength, const GLfloat isHollow, const GLfloat colour[3] );
+            void DrawSquare( const GLfloat xCenterPos, const GLfloat yCenterPos, const GLfloat zCenterPos, const GLfloat sideLength, const GLfloat isHollow, const GLfloat ( &colour )[3] );
             
             /**
              * Draw a quad
@@ -37,7 +37,7 @@ namespace GLHelper
              * @param isHollow is the quad hollow or filled in
              * @param colour is the fill/edge colour (RED [0-255], GREEN [0-255], BLUE [0-255])
              */
-            void DrawQuad( const GLfloat topLeftVertex[3], const GLfloat topRightVertex[3], const GLfloat bottomRightVertex[3], const GLfloat bottomLeftVertex[3], const GLboolean isHollow, const GLfloat colour[3] );
+            void DrawQuad( const GLfloat topLeftVertex[3], const GLfloat topRightVertex[3], const GLfloat bottomRightVertex[3], const GLfloat bottomLeftVertex[3], const GLboolean isHollow, const GLfloat ( &colour )[3] );
             
             /**
              * Draw a rectangle
@@ -49,7 +49,7 @@ namespace GLHelper
              * @param isHollow is the rectangle hollow or filled in
              * @param colour is the fill/edge colour (RED [0-255], GREEN [0-255], BLUE [0-255])
              */
-            void DrawRectangle( const GLfloat xCenterPos, const GLfloat yCenterPos, const GLfloat zCenterPos, const GLfloat width, const GLfloat height, const GLboolean isHollow, const GLfloat colour[3] );
+            void DrawRectangle( const GLfloat xCenterPos, const GLfloat yCenterPos, const GLfloat zCenterPos, const GLfloat width, const GLfloat height, const GLboolean isHollow, const GLfloat ( &colour )[3] );
         }
     }
 }

@@ -11,11 +11,10 @@
 
 // ASSUMES YOU HAVE GLEW SETUP
 
-#define WIREFRAME_ON true
-#define WIREFRAME_OFF false
+#define WIREFRAME_ON    true
+#define WIREFRAME_OFF   false
 
-#include "GenericIncludes.h"
-
+#include "Defines/Colours.h"
 #include "Shapes/Shapes.h"
 
 #endif /* GLHelper_hpp */

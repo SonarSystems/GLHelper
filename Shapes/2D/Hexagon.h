@@ -9,9 +9,7 @@
 #ifndef HEXAGON_H
 #define HEXAGON_H
 
-#include "../../GenericIncludes.h"
-
-#include "Circle.h"
+#include <GL/glew.h>
 
 namespace GLHelper
 {
@@ -28,7 +26,7 @@ namespace GLHelper
              * @param isHollow is the hexagon hollow or filled in
              * @param colour is the fill/edge colour (RED [0-255], GREEN [0-255], BLUE [0-255])
              */
-            void DrawHexagon( const GLfloat xCenterPos, const GLfloat yCenterPos, const GLfloat zCenterPos, const GLfloat radius, const GLboolean isHollow, const GLfloat colour[3] );
+            void DrawHexagon( const GLfloat xCenterPos, const GLfloat yCenterPos, const GLfloat zCenterPos, const GLfloat radius, const GLboolean isHollow, const GLfloat ( &colour )[3] );
         }
     }
 }

@@ -8,88 +8,63 @@
 
 #include "Cube.h"
 
-void GLHelper::Shapes3D::Cube::DrawCube( const GLfloat xCenterPos, const GLfloat yCenterPos, const GLfloat zCenterPos, const GLfloat edgeLength, const GLfloat isWireframe, const GLfloat colour[3] )
+GLHelper::Shapes3D::Cube::Cube( )
+{
+    this->centerPosition.x = 0;
+    this->centerPosition.y = 0;
+    this->centerPosition.z = 0;
+    
+    this->edgeLength = 1;
+}
+
+void GLHelper::Shapes3D::Cube::Draw( )
 {
     GLfloat halfSideLength = edgeLength * 0.5f;
     
     GLfloat vertices[] =
     {
         // front face
-        xCenterPos - halfSideLength, yCenterPos + halfSideLength, zCenterPos + halfSideLength, // top left
-        xCenterPos + halfSideLength, yCenterPos + halfSideLength, zCenterPos + halfSideLength, // top right
-        xCenterPos + halfSideLength, yCenterPos - halfSideLength, zCenterPos + halfSideLength, // bottom right
-        xCenterPos - halfSideLength, yCenterPos - halfSideLength, zCenterPos + halfSideLength, // bottom left
+        centerPosition.x - halfSideLength, centerPosition.y + halfSideLength, centerPosition.z + halfSideLength, // top left
+        centerPosition.x + halfSideLength, centerPosition.y + halfSideLength, centerPosition.z + halfSideLength, // top right
+        centerPosition.x + halfSideLength, centerPosition.y - halfSideLength, centerPosition.z + halfSideLength, // bottom right
+        centerPosition.x - halfSideLength, centerPosition.y - halfSideLength, centerPosition.z + halfSideLength, // bottom left
         
         // back face
-        xCenterPos - halfSideLength, yCenterPos + halfSideLength, zCenterPos - halfSideLength, // top left
-        xCenterPos + halfSideLength, yCenterPos + halfSideLength, zCenterPos - halfSideLength, // top right
-        xCenterPos + halfSideLength, yCenterPos - halfSideLength, zCenterPos - halfSideLength, // bottom right
-        xCenterPos - halfSideLength, yCenterPos - halfSideLength, zCenterPos - halfSideLength, // bottom left
+        centerPosition.x - halfSideLength, centerPosition.y + halfSideLength, centerPosition.z - halfSideLength, // top left
+        centerPosition.x + halfSideLength, centerPosition.y + halfSideLength, centerPosition.z - halfSideLength, // top right
+        centerPosition.x + halfSideLength, centerPosition.y - halfSideLength, centerPosition.z - halfSideLength, // bottom right
+        centerPosition.x - halfSideLength, centerPosition.y - halfSideLength, centerPosition.z - halfSideLength, // bottom left
         
         // left face
-        xCenterPos - halfSideLength, yCenterPos + halfSideLength, zCenterPos + halfSideLength, // top left
-        xCenterPos - halfSideLength, yCenterPos + halfSideLength, zCenterPos - halfSideLength, // top right
-        xCenterPos - halfSideLength, yCenterPos - halfSideLength, zCenterPos - halfSideLength, // bottom right
-        xCenterPos - halfSideLength, yCenterPos - halfSideLength, zCenterPos + halfSideLength, // bottom left
+        centerPosition.x - halfSideLength, centerPosition.y + halfSideLength, centerPosition.z + halfSideLength, // top left
+        centerPosition.x - halfSideLength, centerPosition.y + halfSideLength, centerPosition.z - halfSideLength, // top right
+        centerPosition.x - halfSideLength, centerPosition.y - halfSideLength, centerPosition.z - halfSideLength, // bottom right
+        centerPosition.x - halfSideLength, centerPosition.y - halfSideLength, centerPosition.z + halfSideLength, // bottom left
         
         // right face
-        xCenterPos + halfSideLength, yCenterPos + halfSideLength, zCenterPos + halfSideLength, // top left
-        xCenterPos + halfSideLength, yCenterPos + halfSideLength, zCenterPos - halfSideLength, // top right
-        xCenterPos + halfSideLength, yCenterPos - halfSideLength, zCenterPos - halfSideLength, // bottom right
-        xCenterPos + halfSideLength, yCenterPos - halfSideLength, zCenterPos + halfSideLength, // bottom left
+        centerPosition.x + halfSideLength, centerPosition.y + halfSideLength, centerPosition.z + halfSideLength, // top left
+        centerPosition.x + halfSideLength, centerPosition.y + halfSideLength, centerPosition.z - halfSideLength, // top right
+        centerPosition.x + halfSideLength, centerPosition.y - halfSideLength, centerPosition.z - halfSideLength, // bottom right
+        centerPosition.x + halfSideLength, centerPosition.y - halfSideLength, centerPosition.z + halfSideLength, // bottom left
         
         // top face
-        xCenterPos - halfSideLength, yCenterPos + halfSideLength, zCenterPos + halfSideLength, // top left
-        xCenterPos - halfSideLength, yCenterPos + halfSideLength, zCenterPos - halfSideLength, // top right
-        xCenterPos + halfSideLength, yCenterPos + halfSideLength, zCenterPos - halfSideLength, // bottom right
-        xCenterPos + halfSideLength, yCenterPos + halfSideLength, zCenterPos + halfSideLength, // bottom left
+        centerPosition.x - halfSideLength, centerPosition.y + halfSideLength, centerPosition.z + halfSideLength, // top left
+        centerPosition.x - halfSideLength, centerPosition.y + halfSideLength, centerPosition.z - halfSideLength, // top right
+        centerPosition.x + halfSideLength, centerPosition.y + halfSideLength, centerPosition.z - halfSideLength, // bottom right
+        centerPosition.x + halfSideLength, centerPosition.y + halfSideLength, centerPosition.z + halfSideLength, // bottom left
         
         // top face
-        xCenterPos - halfSideLength, yCenterPos - halfSideLength, zCenterPos + halfSideLength, // top left
-        xCenterPos - halfSideLength, yCenterPos - halfSideLength, zCenterPos - halfSideLength, // top right
-        xCenterPos + halfSideLength, yCenterPos - halfSideLength, zCenterPos - halfSideLength, // bottom right
-        xCenterPos + halfSideLength, yCenterPos - halfSideLength, zCenterPos + halfSideLength  // bottom left
+        centerPosition.x - halfSideLength, centerPosition.y - halfSideLength, centerPosition.z + halfSideLength, // top left
+        centerPosition.x - halfSideLength, centerPosition.y - halfSideLength, centerPosition.z - halfSideLength, // top right
+        centerPosition.x + halfSideLength, centerPosition.y - halfSideLength, centerPosition.z - halfSideLength, // bottom right
+        centerPosition.x + halfSideLength, centerPosition.y - halfSideLength, centerPosition.z + halfSideLength  // bottom left
     };
-    
-    /*GLubyte colors[] = {
-        
-        255, 0, 0,
-        255, 0, 0,
-        255, 0, 0,
-        255, 0, 0,
-        
-        0, 0, 255,
-        0, 0, 255,
-        0, 0, 255,
-        0, 0, 255,
-        
-        0, 255, 0,
-        0, 255, 0,
-        0, 255, 0,
-        0, 255, 0,
-        
-        255, 0, 255,
-        255, 0, 255,
-        255, 0, 255,
-        255, 0, 255,
-        
-        0, 255, 255,
-        0, 255, 255,
-        0, 255, 255,
-        0, 255, 255,
-        
-        255, 255, 255,
-        255, 255, 255,
-        255, 255, 255,
-        255, 255, 255,
-    };*/
     
     glPushMatrix( );
     glColor3f( colour[0], colour[1], colour[2] );
-    //glEnableClientState( GL_COLOR_ARRAY );
     glEnableClientState( GL_VERTEX_ARRAY );
-    //glColorPointer( 3, GL_UNSIGNED_BYTE, 0, colors );
     glVertexPointer( 3, GL_FLOAT, 0, vertices );
+    
     if ( isWireframe )
     {
         glDrawArrays( GL_LINE_LOOP, 0, 4 );
@@ -103,7 +78,63 @@ void GLHelper::Shapes3D::Cube::DrawCube( const GLfloat xCenterPos, const GLfloat
     {
         glDrawArrays( GL_QUADS, 0, 24 );
     }
+    
     glDisableClientState( GL_VERTEX_ARRAY );
-    //glDisableClientState( GL_COLOR_ARRAY );
     glPopMatrix( );
 }
+
+void GLHelper::Shapes3D::Cube::SetCenterPosition( GLfloat x, GLfloat y, GLfloat z )
+{
+    this->centerPosition.x = x;
+    this->centerPosition.y = y;
+    this->centerPosition.z = z;
+}
+
+
+void GLHelper::Shapes3D::Cube::SetCenterPositionX( GLfloat x )
+{
+    this->centerPosition.x = x;
+}
+
+void GLHelper::Shapes3D::Cube::SetCenterPositionY( GLfloat y )
+{
+    
+    this->centerPosition.y = y;
+}
+
+void GLHelper::Shapes3D::Cube::SetCenterPositionZ( GLfloat z )
+{
+    
+    this->centerPosition.z = z;
+}
+
+glm::vec3 GLHelper::Shapes3D::Cube::GetCenterPosition( )
+{
+    return this->centerPosition;
+}
+
+GLfloat GLHelper::Shapes3D::Cube::GetCenterPositionX( )
+{
+    return this->centerPosition.x;
+}
+
+GLfloat GLHelper::Shapes3D::Cube::GetCenterPositionY( )
+{
+    return this->centerPosition.y;
+}
+
+GLfloat GLHelper::Shapes3D::Cube::GetCenterPositionZ( )
+{
+    return this->centerPosition.z;
+}
+
+void GLHelper::Shapes3D::Cube::SetEdgeLength( GLfloat edgeLength )
+{
+    this->edgeLength = edgeLength;
+}
+
+bool GLHelper::Shapes3D::Cube::GetEdgeLength( )
+{
+    return this->edgeLength;
+}
+

@@ -9,7 +9,7 @@
 #ifndef CIRCLE_H
 #define CIRCLE_H
 
-#include "../../GenericIncludes.h"
+#include <GL/glew.h>
 
 namespace GLHelper
 {
@@ -27,7 +27,7 @@ namespace GLHelper
              * @param isHollow is the circle hollow or filled in
              * @param colour is the fill/edge colour (RED [0-255], GREEN [0-255], BLUE [0-255])
              */
-            void DrawCircle( const GLfloat xCenterPos, const GLfloat yCenterPos, const GLfloat zCenterPos, const GLfloat radius, const GLint numberOfSides, const GLboolean isHollow, const GLfloat colour[3] );
+            void DrawCircle( const GLfloat xCenterPos, const GLfloat yCenterPos, const GLfloat zCenterPos, const GLfloat radius, const GLint numberOfSides, const GLboolean isHollow, const GLfloat ( &colour )[3] );
         }
     }
 }

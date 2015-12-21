@@ -8,7 +8,9 @@
 
 #include "Circle.h"
 
-void GLHelper::Shapes2D::Circle::DrawCircle( const GLfloat xCenterPos, const GLfloat yCenterPos, const GLfloat zCenterPos, const GLfloat radius, const GLint numberOfSides, const GLboolean isHollow, const GLfloat colour[3] )
+#include <math.h>
+
+void GLHelper::Shapes2D::Circle::DrawCircle( const GLfloat xCenterPos, const GLfloat yCenterPos, const GLfloat zCenterPos, const GLfloat radius, const GLint numberOfSides, const GLboolean isHollow, const GLfloat ( &colour )[3] )
 {
     GLint numberOfVertices;
     int startingIndex = 1;

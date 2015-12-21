@@ -8,7 +8,7 @@
 
 #include "Quad.h"
 
-void GLHelper::Shapes2D::Quad::DrawSquare( const GLfloat xCenterPos, const GLfloat yCenterPos, const GLfloat zCenterPos, const GLfloat sideLength, const GLfloat isHollow, const GLfloat colour[3] )
+void GLHelper::Shapes2D::Quad::DrawSquare( const GLfloat xCenterPos, const GLfloat yCenterPos, const GLfloat zCenterPos, const GLfloat sideLength, const GLfloat isHollow, const GLfloat ( &colour )[3] )
 {
     GLfloat halfSideLength = sideLength * 0.5f;
     
@@ -32,7 +32,7 @@ void GLHelper::Shapes2D::Quad::DrawSquare( const GLfloat xCenterPos, const GLflo
     glPopMatrix( );
 }
 
-void GLHelper::Shapes2D::Quad::DrawQuad( const GLfloat topLeftVertex[3], const GLfloat topRightVertex[3], const GLfloat bottomRightVertex[3], const GLfloat bottomLeftVertex[3], const GLboolean isHollow, const GLfloat colour[3] )
+void GLHelper::Shapes2D::Quad::DrawQuad( const GLfloat topLeftVertex[3], const GLfloat topRightVertex[3], const GLfloat bottomRightVertex[3], const GLfloat bottomLeftVertex[3], const GLboolean isHollow, const GLfloat ( &colour )[3] )
 {
     GLfloat vertices[] =
     {
@@ -54,7 +54,7 @@ void GLHelper::Shapes2D::Quad::DrawQuad( const GLfloat topLeftVertex[3], const G
     glPopMatrix( );
 }
 
-void GLHelper::Shapes2D::Quad::DrawRectangle( const GLfloat xCenterPos, const GLfloat yCenterPos, const GLfloat zCenterPos, const GLfloat width, const GLfloat height, const GLboolean isHollow, const GLfloat colour[3] )
+void GLHelper::Shapes2D::Quad::DrawRectangle( const GLfloat xCenterPos, const GLfloat yCenterPos, const GLfloat zCenterPos, const GLfloat width, const GLfloat height, const GLboolean isHollow, const GLfloat ( &colour )[3] )
 {
     GLfloat halfWidth = width * 0.5f;
     GLfloat halfHeight = height * 0.5f;

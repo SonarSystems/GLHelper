@@ -9,25 +9,81 @@
 #ifndef CUBE_H
 #define CUBE_H
 
-#include "../../GenericIncludes.h"
+#include <GL/glew.h>
+
+#include "../../Base/Object.h"
+#include "../../External/glm/vec3.hpp"
 
 namespace GLHelper
 {
     namespace Shapes3D
     {
-        namespace Cube
+        class Cube : public Object
         {
+        public:
             /**
-             * Draw a cube by specifying the center position of the cube and the length of each edge
-             * @param xCenterPos x-axis coordinate for the center of the cube
-             * @param yCenterPos y-axis coordinate for the center of the cube
-             * @param zCenterPos z-axis coordinate for the center of the cube
-             * @param isHollow is the triangle hollow or filled in
-             * @param isWireframe is the cube rendered in wireframe or normal mode
-             * @param colour is the fill/edge colour (RED [0-255], GREEN [0-255], BLUE [0-255])
+             * Constructor
              */
-            void DrawCube( const GLfloat xCenterPos, const GLfloat yCenterPos, const GLfloat zCenterPos, const GLfloat edgeLength, const GLfloat isWireframe, const GLfloat colour[3] );
-        }
+            Cube( );
+            
+            /**
+             * Draw the cube
+             */
+            void Draw( );
+            
+            /**
+             * Set the cube's center position (x, y, z) coordinates
+             * @param x x position coordinate
+             * @param y y position coordinate
+             * @param z z position coordinate
+             */
+            void SetCenterPosition( GLfloat x, GLfloat y, GLfloat z );
+            /**
+             * Set the cube's x center position
+             * @param x x position coordinate
+             */
+            void SetCenterPositionX( GLfloat x );
+            /**
+             * Set the cube's y center position
+             * @param y y position coordinate
+             */
+            void SetCenterPositionY( GLfloat y );
+            /**
+             * Set the cube's z center position
+             * @param z z position coordinate
+             */
+            void SetCenterPositionZ( GLfloat z );
+            /**
+             * Get the cube's center position (x, y, z) coordinate values
+             */
+            glm::vec3 GetCenterPosition( );
+            /**
+             * Get the cube's center x position coordinate value
+             */
+            GLfloat GetCenterPositionX( );
+            /**
+             * Get the cube's center y position coordinate value
+             */
+            GLfloat GetCenterPositionY( );
+            /**
+             * Get the cube's center z position coordinate value
+             */
+            GLfloat GetCenterPositionZ( );
+            
+            /**
+             * Set the edge length of the cube's sides
+             * @param edgeLength the length of the cube's edges
+             */
+            void SetEdgeLength( GLfloat edgeLength );
+            /**
+             * Get the cube's edge length
+             */
+            bool GetEdgeLength( );
+            
+        private:
+            glm::vec3 centerPosition;
+            GLfloat edgeLength;
+        };
     }
 }
 

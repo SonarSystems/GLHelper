@@ -9,7 +9,7 @@
 #ifndef TRIANGLE_H
 #define TRIANGLE_H
 
-#include "../../GenericIncludes.h"
+#include <GL/glew.h>
 
 namespace GLHelper
 {
@@ -26,7 +26,7 @@ namespace GLHelper
              * @param isHollow is the triangle hollow or filled in
              * @param colour is the fill/edge colour (RED [0-255], GREEN [0-255], BLUE [0-255])
              */
-            void DrawTriangle( const GLfloat xCenterPos, const GLfloat yCenterPos, const GLfloat zCenterPos, const GLfloat sideLength, const GLboolean isHollow, const GLfloat colour[3] );
+            void DrawTriangle( const GLfloat xCenterPos, const GLfloat yCenterPos, const GLfloat zCenterPos, const GLfloat sideLength, const GLboolean isHollow, const GLfloat ( &colour )[3] );
             
             /**
              * Draw a triangle by specifying an array with all 3 vertices
@@ -34,7 +34,7 @@ namespace GLHelper
              * @param isHollow is the triangle hollow or filled in
              * @param colour is the fill/edge colour (RED [0-255], GREEN [0-255], BLUE [0-255])
              */
-            void DrawTriangle( const GLfloat vertices[9], const GLboolean isHollow, const GLfloat colour[3] );
+            void DrawTriangle( const GLfloat vertices[9], const GLboolean isHollow, const GLfloat ( &colour )[3] );
             
             /**
              * Draw a triangle by specifying the xyz coordinates for each vertex
@@ -50,7 +50,7 @@ namespace GLHelper
              * @param isHollow is the triangle hollow or filled in
              * @param colour is the fill/edge colour (RED [0-255], GREEN [0-255], BLUE [0-255])
              */
-            inline void DrawTriangle( const GLfloat vertex1X, const GLfloat vertex1Y, const GLfloat vertex1Z, const GLfloat vertex2X, const GLfloat vertex2Y, const GLfloat vertex2Z, const GLfloat vertex3X, const GLfloat vertex3Y, const GLfloat vertex3Z, const GLboolean isHollow, const GLfloat colour[3] )
+            inline void DrawTriangle( const GLfloat vertex1X, const GLfloat vertex1Y, const GLfloat vertex1Z, const GLfloat vertex2X, const GLfloat vertex2Y, const GLfloat vertex2Z, const GLfloat vertex3X, const GLfloat vertex3Y, const GLfloat vertex3Z, const GLboolean isHollow, const GLfloat ( &colour )[3] )
             { DrawTriangle( new GLfloat[9]{vertex1X, vertex1Y, vertex1Z, vertex2X, vertex2Y, vertex2Z, vertex3X, vertex3Y, vertex3Z}, isHollow, colour ); }
             
             /**
@@ -61,7 +61,7 @@ namespace GLHelper
              * @param isHollow is the triangle hollow or filled in
              * @param colour is the fill/edge colour (RED [0-255], GREEN [0-255], BLUE [0-255])
              */
-            inline void DrawTriangle( const GLfloat vertex1[3], const GLfloat vertex2[3], const GLfloat vertex3[3], const GLboolean isHollow, const GLfloat colour[3] )
+            inline void DrawTriangle( const GLfloat vertex1[3], const GLfloat vertex2[3], const GLfloat vertex3[3], const GLboolean isHollow, const GLfloat ( &colour )[3] )
             { DrawTriangle( new GLfloat[9]{vertex1[0], vertex1[1], vertex1[2], vertex2[0], vertex2[1], vertex2[2], vertex3[0], vertex3[1], vertex3[2]}, isHollow, colour ); }
         }
     }

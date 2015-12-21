@@ -9,9 +9,7 @@
 #ifndef PENTAGON_H
 #define PENTAGON_H
 
-#include "../../GenericIncludes.h"
-
-#include "Circle.h"
+#include <GL/glew.h>
 
 namespace GLHelper
 {
@@ -28,7 +26,7 @@ namespace GLHelper
              * @param isHollow is the pentagon hollow or filled in
              * @param colour is the fill/edge colour (RED [0-255], GREEN [0-255], BLUE [0-255])
              */
-            void DrawPentagon( const GLfloat xCenterPos, const GLfloat yCenterPos, const GLfloat zCenterPos, const GLfloat radius, const GLboolean isHollow, const GLfloat colour[3] );
+            void DrawPentagon( const GLfloat xCenterPos, const GLfloat yCenterPos, const GLfloat zCenterPos, const GLfloat radius, const GLboolean isHollow, const GLfloat ( &colour )[3] );
         }
     }
 }
