@@ -10,10 +10,6 @@
 
 GLHelper::Shapes3D::Cube::Cube( )
 {
-    this->centerPosition.x = 0;
-    this->centerPosition.y = 0;
-    this->centerPosition.z = 0;
-    
     this->edgeLength = 1;
 }
 
@@ -83,57 +79,12 @@ void GLHelper::Shapes3D::Cube::Draw( )
     glPopMatrix( );
 }
 
-void GLHelper::Shapes3D::Cube::SetCenterPosition( GLfloat x, GLfloat y, GLfloat z )
-{
-    this->centerPosition.x = x;
-    this->centerPosition.y = y;
-    this->centerPosition.z = z;
-}
-
-
-void GLHelper::Shapes3D::Cube::SetCenterPositionX( GLfloat x )
-{
-    this->centerPosition.x = x;
-}
-
-void GLHelper::Shapes3D::Cube::SetCenterPositionY( GLfloat y )
-{
-    
-    this->centerPosition.y = y;
-}
-
-void GLHelper::Shapes3D::Cube::SetCenterPositionZ( GLfloat z )
-{
-    
-    this->centerPosition.z = z;
-}
-
-glm::vec3 GLHelper::Shapes3D::Cube::GetCenterPosition( )
-{
-    return this->centerPosition;
-}
-
-GLfloat GLHelper::Shapes3D::Cube::GetCenterPositionX( )
-{
-    return this->centerPosition.x;
-}
-
-GLfloat GLHelper::Shapes3D::Cube::GetCenterPositionY( )
-{
-    return this->centerPosition.y;
-}
-
-GLfloat GLHelper::Shapes3D::Cube::GetCenterPositionZ( )
-{
-    return this->centerPosition.z;
-}
-
 void GLHelper::Shapes3D::Cube::SetEdgeLength( GLfloat edgeLength )
 {
     this->edgeLength = edgeLength;
 }
 
-bool GLHelper::Shapes3D::Cube::GetEdgeLength( )
+GLfloat GLHelper::Shapes3D::Cube::GetEdgeLength( )
 {
     return this->edgeLength;
 }

@@ -11,24 +11,51 @@
 
 #include <GL/glew.h>
 
+#include "../../Base/Object.h"
+
 namespace GLHelper
 {
     namespace Shapes2D
     {
-        namespace Circle
+        class Circle : public Object
         {
+        public:
             /**
-             * Draw a circle
-             * @param xCenterPos x-axis coordinate for the center of the circle
-             * @param yCenterPos y-axis coordinate for the center of the circle
-             * @param zCenterPos z-axis coordinate for the center of the circle
-             * @param radius circle radius
-             * @param numberOfSides how many sides does the circle have
-             * @param isHollow is the circle hollow or filled in
-             * @param colour is the fill/edge colour (RED [0-255], GREEN [0-255], BLUE [0-255])
+             * Constructor
              */
-            void DrawCircle( const GLfloat xCenterPos, const GLfloat yCenterPos, const GLfloat zCenterPos, const GLfloat radius, const GLint numberOfSides, const GLboolean isHollow, const GLfloat ( &colour )[3] );
-        }
+            Circle( );
+            
+            /**
+             * Draw the circle
+             */
+            void Draw( );
+            
+            
+            /**
+             * Set the radius of the circle
+             * @param radius the radius of the circle
+             */
+            void SetRadius( GLfloat radius );
+            /**
+             * Get the circle's radius
+             */
+            GLfloat GetRadius( );
+            
+            /**
+             * Set the number of sides that make up the circle
+             * @param numberOfSides the number of sides the circle will be made up of (a greater number provides a smoother circle)
+             */
+            void SetNumberOfSides( GLint numberOfSides );
+            /**
+             * Get the number of sides that the circle is made up of
+             */
+            GLint GetNumberOfSides( );
+            
+        private:
+            GLfloat radius;
+            GLint numberOfSides;
+            
+        };
     }
 }
 

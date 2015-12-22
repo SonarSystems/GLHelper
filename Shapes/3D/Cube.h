@@ -31,45 +31,7 @@ namespace GLHelper
              */
             void Draw( );
             
-            /**
-             * Set the cube's center position (x, y, z) coordinates
-             * @param x x position coordinate
-             * @param y y position coordinate
-             * @param z z position coordinate
-             */
-            void SetCenterPosition( GLfloat x, GLfloat y, GLfloat z );
-            /**
-             * Set the cube's x center position
-             * @param x x position coordinate
-             */
-            void SetCenterPositionX( GLfloat x );
-            /**
-             * Set the cube's y center position
-             * @param y y position coordinate
-             */
-            void SetCenterPositionY( GLfloat y );
-            /**
-             * Set the cube's z center position
-             * @param z z position coordinate
-             */
-            void SetCenterPositionZ( GLfloat z );
-            /**
-             * Get the cube's center position (x, y, z) coordinate values
-             */
-            glm::vec3 GetCenterPosition( );
-            /**
-             * Get the cube's center x position coordinate value
-             */
-            GLfloat GetCenterPositionX( );
-            /**
-             * Get the cube's center y position coordinate value
-             */
-            GLfloat GetCenterPositionY( );
-            /**
-             * Get the cube's center z position coordinate value
-             */
-            GLfloat GetCenterPositionZ( );
-            
+                        
             /**
              * Set the edge length of the cube's sides
              * @param edgeLength the length of the cube's edges
@@ -78,10 +40,9 @@ namespace GLHelper
             /**
              * Get the cube's edge length
              */
-            bool GetEdgeLength( );
+            GLfloat GetEdgeLength( );
             
         private:
-            glm::vec3 centerPosition;
             GLfloat edgeLength;
         };
     }
